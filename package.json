@@ -1,0 +1,32 @@
+{
+  "name": "oer-website",
+  "version": "0.0.1",
+  "engines": {
+    "node": "20.15.1",
+    "npm": "10.7.1"
+  },
+  "packageManager": "pnpm@9.5.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "next": "^14.2.5",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "website": "link:"
+  },
+  "devDependencies": {
+    "@types/node": "22.0.0",
+    "@types/react": "18.3.3",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "typescript": "5.5.4"
+  }
+}
