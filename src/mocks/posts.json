@@ -1,0 +1,308 @@
+[
+    {
+        "id": 6,
+        "date": "2024-07-27T17:55:22",
+        "date_gmt": "2024-07-27T17:55:22",
+        "guid": {
+            "rendered": "https:\/\/oer.free.nf\/cms\/?p=6"
+        },
+        "modified": "2024-07-27T17:55:22",
+        "modified_gmt": "2024-07-27T17:55:22",
+        "slug": "comunicazione-ai-sensi-della-legge-n-124-2017-comma-125-129-dellart-1",
+        "status": "publish",
+        "type": "post",
+        "link": "https:\/\/oer.free.nf\/cms\/2024\/07\/27\/comunicazione-ai-sensi-della-legge-n-124-2017-comma-125-129-dellart-1\/",
+        "title": {
+            "rendered": "Comunicazione ai sensi della Legge n. 124\/2017, comma 125-129 dell\u2019art.1"
+        },
+        "content": {
+            "rendered": "\n<p>L\u2019associazione OER ODV avente sede a Trani (BT) in VIA GIUSEPPE DI VITTORIO n. 47 con codice fiscale 92066360725, COMUNICA ai sensi della Legge n. 124\/2017, comma 125-129 dell\u2019art.1 di avere ricevuto nell&#8217;anno 2022 le seguenti erogazioni pubbliche:<\/p>\n\n\n\n<p><br>Data Incasso Ente Erogante Somma Incassata Causale Note<\/p>\n\n\n\n<p><br>05\/05\/2022 REGIONE PUGLIA \u20ac 2.000,00 Convenzione per attivit\u00e0 antincendio<br>02\/08\/2022 MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI 3.166,19 Contributo per l&#8217;acquisto di ambulanze, veicoli sanitari e beni strumentali, ANNO 2019.<br>02\/08\/2022 MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI 8.871,21 Contributo per l&#8217;acquisto di ambulanze, veicoli sanitari e beni strumentali, ANNO 2019.<br>05\/10\/2022 REGIONE PUGLIA \u20ac 2.100,00 Convenzione per attivit\u00e0 antincendio<br>25\/11\/2022 REGIONE PUGLIA 8.000,00 Contributo Regione Puglia &#8211; Puglia Capitale 3.0 Rimborsi Covid.<br>16\/12\/2022 MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI \u20ac 6.131,23 Contributo 5 per mille ANNO 2021.<br>29\/12\/2022 MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI \u20ac 1.639,13 Contributo per l&#8217;acquisto di ambulanze, veicoli sanitari e beni strumentali, ANNO 2020.<br>29\/12\/2022 MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI 2.503,75 Contributo per l&#8217;acquisto di ambulanze, veicoli sanitari e beni strumentali,&nbsp; ANNO 2020.<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>L\u2019associazione OER ODV avente sede a Trani (BT) in VIA GIUSEPPE DI VITTORIO n. 47 con codice fiscale 92066360725, COMUNICA ai sensi della Legge n. 124\/2017, comma 125-129 dell\u2019art.1 di avere ricevuto nell&#8217;anno 2022 le seguenti erogazioni pubbliche: Data Incasso Ente Erogante Somma Incassata Causale Note 05\/05\/2022 REGIONE PUGLIA \u20ac 2.000,00 Convenzione per attivit\u00e0 antincendio02\/08\/2022 [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": {
+            "footnotes": ""
+        },
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/6"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/comments?post=6"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 1,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/6\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 8,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/6\/revisions\/8"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/media?parent=6"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/categories?post=6"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/tags?post=6"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    },
+    {
+        "id": 9,
+        "date": "2024-07-26T17:55:26",
+        "date_gmt": "2024-07-26T17:55:26",
+        "guid": {
+            "rendered": "https:\/\/oer.free.nf\/cms\/?p=9"
+        },
+        "modified": "2024-07-27T18:04:26",
+        "modified_gmt": "2024-07-27T18:04:26",
+        "slug": "diventa-volontario-oer",
+        "status": "publish",
+        "type": "post",
+        "link": "https:\/\/oer.free.nf\/cms\/2024\/07\/26\/diventa-volontario-oer\/",
+        "title": {
+            "rendered": "DIVENTA VOLONTARIO OER"
+        },
+        "content": {
+            "rendered": "\n<p><strong>Un modo semplice per avvicinarsi al mondo del volontariato<\/strong><\/p>\n\n\n\n<p><strong>Settori di Intervento:<\/strong><\/p>\n\n\n\n<p>Trasporti Sanitari;<\/p>\n\n\n\n<p>Assistenza Anziani e Disabili;<\/p>\n\n\n\n<p>Protezione Civile;<\/p>\n\n\n\n<p>Corsi di Formazione sia Sanitaria che di Protezione Civile;<\/p>\n\n\n\n<p>Assistenza Sanitaria in Manifestazioni;<\/p>\n\n\n\n<p>Taxi Sociale;<\/p>\n\n\n\n<p>Raccolta Farmaci;<\/p>\n\n\n\n<p>Farmaco a Domicilio;<\/p>\n\n\n\n<p>Raccolta Alimentare;<\/p>\n\n\n\n<p>Raccolta Indumenti;<\/p>\n\n\n\n<figure class=\"wp-block-image\"><img decoding=\"async\" src=\"https:\/\/www.oertrani.it\/home\/images\/documento165%20-%20Copia.jpg\" alt=\"\"\/><\/figure>\n\n\n\n<p><strong>Sono disponibil le nuove tessere per Sostenitori 2022, per informazioni contattaci.<\/strong><\/p>\n\n\n\n<p>Tel.0883-500600 Cell.3296036592&nbsp;&#8211; Mail:<a href=\"mailto:info@oertrani.it\">info@oertrani.it<\/a>; Facebook:<a href=\"https:\/\/www.facebook.com\/oer.trani\">https:\/\/www.facebook.com\/oer.trani<\/a><\/p>\n\n\n\n<p><strong>Volontari&nbsp;<\/strong><\/p>\n\n\n\n<p>Essere volontaria\/o di una pubblica assistenza Anpas vuol dire impegnarsi ogni giorno per l&#8217;uguaglianza, la libert\u00e0, la&nbsp;fraternit\u00e0, la gratuit\u00e0, la solidariet\u00e0, la mutualit\u00e0 e la&nbsp;democrazia, impegnarsi per i diritti umani e civili sanciti dalla Costituzione Italiana e dei diritti universalmente riconosciuti dell&#8217;essere umano.&nbsp;<\/p>\n\n\n\n<p>Essere volontario di una pubblica assistenza Anpas ha un significato che cambia ogni giorno da oltre centododici anni in tutta Italia.&nbsp;Vuol dire essere parte della pi\u00f9 grande associazione di volontariato laica d&#8217;Italia.<\/p>\n\n\n\n<p>Ogni volontario, nell\u2019ambito in cui vive (famiglia, scuola, lavoro), \u00e8 testimone dell\u2019attivit\u00e0 che svolge: dal soccorso all&#8217;assistenza sociale, dalla condivisione di percorsi con persone con disabilit\u00e0 al sostegno a distanza, dalla protezione civile all&#8217;attivit\u00e0 cinofila, dalla psicologia dell&#8217;emergenza alla donazione sangue, dal&nbsp;<a href=\"https:\/\/www.youtube.com\/watch?v=CyKdSeXBq9k\">trucco&nbsp;<\/a>per una esercitazione alla creazione di eventi, dalla condivisione di nuove idee per il bene comune con il resto dell&#8217;associazione alle attivit\u00e0 culturali in pi\u00f9 di mille comuni d&#8217;Italia.<\/p>\n\n\n\n<p>Essere volontario Anpas vuol dire prendere parte alla costruzione di una societ\u00e0 pi\u00f9 giusta e solidale.&nbsp;<\/p>\n\n\n\n<p>I volontari svolgono un ruolo fondamentale nell&#8217;opera di informazione e di sensibilizzazione dell&#8217;opinione pubblica e nella diffusione di una cultura della pace e della&nbsp;prevenzione per la tutela del territorio.<\/p>\n\n\n\n<p>Sin dalla fondazione nel 1904, punto di forza del movimento delle pubbliche assistenze sono sempre stati i volontari (oggi novantamila) e i cittadini soci (oggi gli oltre trecentomilamila) che hanno sottoscritto la tessera nazionale Anpas esprimendo cos\u00ec l\u2019adesione ai valori di Anpas e la volont\u00e0 di partecipazione per essere coinvolti negli obiettivi di Anpas. &nbsp;Il tesseramento \u00e8 una scelta fondamentale che permette ad Anpas di poter contare maggiormente nei confronti delle Istituzioni e della societ\u00e0 civile.<\/p>\n\n\n\n<p>Per diventare volontari Anpas, potete rivolgervi presso la nostra sede.<\/p>\n\n\n\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"640\" height=\"452\" src=\"http:\/\/oer.free.nf\/cms\/wp-content\/uploads\/2024\/07\/documento165-Copia.jpg\" alt=\"\" class=\"wp-image-11\" srcset=\"http:\/\/oer.free.nf\/cms\/wp-content\/uploads\/2024\/07\/documento165-Copia.jpg 640w, http:\/\/oer.free.nf\/cms\/wp-content\/uploads\/2024\/07\/documento165-Copia-300x212.jpg 300w\" sizes=\"(max-width: 640px) 100vw, 640px\" \/><\/figure>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Un modo semplice per avvicinarsi al mondo del volontariato Settori di Intervento: Trasporti Sanitari; Assistenza Anziani e Disabili; Protezione Civile; Corsi di Formazione sia Sanitaria che di Protezione Civile; Assistenza Sanitaria in Manifestazioni; Taxi Sociale; Raccolta Farmaci; Farmaco a Domicilio; Raccolta Alimentare; Raccolta Indumenti; Sono disponibil le nuove tessere per Sostenitori 2022, per informazioni contattaci. [&hellip;]<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": {
+            "footnotes": ""
+        },
+        "categories": [
+            3
+        ],
+        "tags": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/9"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/comments?post=9"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/9\/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 12,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/9\/revisions\/12"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/media?parent=9"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/categories?post=9"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/tags?post=9"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "date": "2024-07-14T14:49:37",
+        "date_gmt": "2024-07-14T14:49:37",
+        "guid": {
+            "rendered": "http:\/\/oer.free.nf\/cms\/?p=1"
+        },
+        "modified": "2024-07-14T14:49:37",
+        "modified_gmt": "2024-07-14T14:49:37",
+        "slug": "hello-world",
+        "status": "publish",
+        "type": "post",
+        "link": "https:\/\/oer.free.nf\/cms\/2024\/07\/14\/hello-world\/",
+        "title": {
+            "rendered": "Hello world!"
+        },
+        "content": {
+            "rendered": "\n<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!<\/p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!<\/p>\n",
+            "protected": false
+        },
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": {
+            "footnotes": ""
+        },
+        "categories": [
+            1
+        ],
+        "tags": [],
+        "_links": {
+            "self": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/1"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/types\/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/users\/1"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/comments?post=1"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 0,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/posts\/1\/revisions"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/media?parent=1"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/categories?post=1"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "https:\/\/oer.free.nf\/cms\/wp-json\/wp\/v2\/tags?post=1"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https:\/\/api.w.org\/{rel}",
+                    "templated": true
+                }
+            ]
+        }
+    }
+]

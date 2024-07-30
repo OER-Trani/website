@@ -32,3 +32,12 @@ The choice is based on the desire to build as HTML existing articles to improve 
 - `start`: runs next start to start a Next.js production server.
 - `lint`: runs next lint to set up Next.js' built-in ESLint configuration.
 - `format`: format all files in the current folder
+
+
+### Enviroment variables
+
+```
+NEXT_PUBLIC_OER_CMS_ENDPOINT_POSTS=""
+NEXT_PUBLIC_OER_CMS_BA_USER=""
+NEXT_PUBLIC_OER_CMS_BA_PASS=""
+```
