@@ -33,7 +33,6 @@ The choice is based on the desire to build as HTML existing articles to improve 
 - `lint`: runs next lint to set up Next.js' built-in ESLint configuration.
 - `format`: format all files in the current folder
 
-
 ### Enviroment variables
 
 ```
