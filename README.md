@@ -17,9 +17,7 @@ The choice is based on the desire to build as HTML existing articles to improve 
 ├── public/
 │   └── favicon.svg
 ├── src/
-│   ├── app/
 │   ├── components/
-│       ├── layouts/
 │       ├── pages/
 │       └── UI/
 └── package.json
@@ -27,16 +25,13 @@ The choice is based on the desire to build as HTML existing articles to improve 
 
 ### Scripts
 
-- `dev`: runs next dev to start Next.js in development mode.
-- `build`: runs next build to build the application for production usage.
-- `start`: runs next start to start a Next.js production server.
-- `lint`: runs next lint to set up Next.js' built-in ESLint configuration.
-- `format`: format all files in the current folder
+- `dev`: starts development mode.
+- `build`: builds the application for production usage.
+- `lint`: runs linter.
+- `preview`: previews the build
 
 ### Enviroment variables
 
 ```
-NEXT_PUBLIC_OER_CMS_ENDPOINT_POSTS=""
-NEXT_PUBLIC_OER_CMS_BA_USER=""
-NEXT_PUBLIC_OER_CMS_BA_PASS=""
+ 
 ```
