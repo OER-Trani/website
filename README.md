@@ -33,5 +33,5 @@ The choice is based on the desire to build as HTML existing articles to improve 
 ### Enviroment variables
 
 ```
- 
+VITE_CMS_API_ENDPOINT # The endpoint of the CMS API
 ```
