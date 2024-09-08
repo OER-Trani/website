@@ -1,5 +1,5 @@
 import type WPAPI from 'wpapi';
-import wpClient from './client';
+import wpClient from '../client';
 
 wpClient.widgets = wpClient.registerRoute('wp/v2', '/widgets', {
   params: ['before', 'after', 'post', 'status'],
