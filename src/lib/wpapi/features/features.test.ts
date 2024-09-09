@@ -1,8 +1,9 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type WPAPI from 'wpapi';
 import { getCategories } from './categories';
-import { getPost, getPosts } from './posts';
+import { getMedia } from './media';
 import { getPage, getPages } from './pages';
+import { getPost, getPosts } from './posts';
 
 describe.each([
   {
@@ -70,6 +71,13 @@ describe.each([
     mockMethod: 'pages',
     method: getPage,
     responseOk: { id: 1, name: 'Page 1' },
+    responseKO: null,
+  },
+  {
+    description: 'getMedia',
+    mockMethod: 'media',
+    method: getMedia,
+    responseOk: { id: 1, name: 'Media 1' },
     responseKO: null,
   },
 ])('$description', ({ responseOk, responseKO, mockMethod, method }) => {
