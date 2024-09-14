@@ -1,0 +1,6 @@
+.h {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    white-space: break-spaces;
+}

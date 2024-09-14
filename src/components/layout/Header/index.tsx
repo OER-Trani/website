@@ -5,6 +5,7 @@ import { getWidgetType } from '../../../utils/widgets';
 import ImageWidgetComponent from '../../widgets/Image';
 import LinkWidgetComponent from '../../widgets/Link';
 import TextWidgetComponent from '../../widgets/Text';
+import styles from './styles.module.css';
 
 const componentMap = {
   image: ImageWidgetComponent,
@@ -16,7 +17,7 @@ export default function Header() {
   const { data } = useWidgets({ enabled: true, queryClient });
   const widgets = data?.widgetsByPosition.intestazione;
   return (
-    <>
+    <header className={styles.h}>
       {widgets?.map((widget) => {
         const type = getWidgetType(widget);
         if (!type) return null;
@@ -25,6 +26,6 @@ export default function Header() {
         // @ts-ignore
         return <Component {...props} key={widget.id} />;
       })}
-    </>
+    </header>
   );
 }
