@@ -47,7 +47,7 @@ describe('useWidgets', () => {
     const { data } = result.current;
     expect(data?.widgetsByPosition).toEqual({
       intestazione: [mockWidgetsResponse[0]],
-      'fondo pagina': [mockWidgetsResponse[1], mockWidgetsResponse[2]],
+      'fondo pagina': [mockWidgetsResponse[2], mockWidgetsResponse[1]],
       'colonna laterale': [],
     });
     expect(data?.widgets).toEqual(mockWidgetsResponse);

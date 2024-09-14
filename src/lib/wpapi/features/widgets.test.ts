@@ -10,17 +10,21 @@ describe('getWidgets', () => {
       { id: 2, title: 'Widget 2', status: 'publish' },
     ];
     const widgetsMock = {
-      status: vi.fn().mockResolvedValue(mockResponse),
+      status: () => ({
+        per_page: vi.fn().mockResolvedValue(mockResponse),
+      }),
     } as unknown as WPAPI.WPRequest;
 
     const result = await getWidgets(widgetsMock);
 
-    expect(result).toEqual(mockResponse);
+    expect(result).toEqual(mockResponse.reverse());
   });
 
   it('should return null if there is an error', async () => {
     const widgetsMock = {
-      status: vi.fn().mockRejectedValue(new Error('API Error')),
+      status: () => ({
+        per_page: vi.fn().mockRejectedValue(new Error('API Error')),
+      }),
     } as unknown as WPAPI.WPRequest;
 
     const result = await getWidgets(widgetsMock);
