@@ -2,6 +2,7 @@ import { Link, Outlet, createRootRouteWithContext } from '@tanstack/react-router
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { QueryClient } from '@tanstack/react-query';
+import Header from '../components/layout/Header';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -42,6 +43,7 @@ function RootComponent() {
         </Link> */}
       </nav>
       <hr />
+      <Header />
       <Outlet />
       <ReactQueryDevtools buttonPosition="top-right" />
       <TanStackRouterDevtools position="bottom-right" />
