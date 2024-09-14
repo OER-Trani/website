@@ -56,7 +56,7 @@ async function queryFnGetWidgets(): Promise<QueryFnGetWidgetsOutput> {
       if (acc[position].length) {
         return {
           ...acc,
-          [position]: [...acc[position], widgetData],
+          [position]: [widgetData, ...acc[position]],
         };
       }
       return {
