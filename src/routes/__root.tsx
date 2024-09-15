@@ -3,6 +3,8 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { QueryClient } from '@tanstack/react-query';
 import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+import Aside from '../components/layout/Aside';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -23,28 +25,12 @@ export const Route = createRootRouteWithContext<{
 function RootComponent() {
   return (
     <>
-      <nav>
-        <Link
-          to="/"
-          activeProps={{
-            className: 'active',
-          }}
-          activeOptions={{ exact: true }}
-        >
-          Home
-        </Link>
-        {/* <Link
-          to={'/posts'}
-          activeProps={{
-            className: 'active',
-          }}
-        >
-          Posts
-        </Link> */}
-      </nav>
-      <hr />
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
+      <Aside />
+      <Footer />
       <ReactQueryDevtools buttonPosition="top-right" />
       <TanStackRouterDevtools position="bottom-right" />
     </>

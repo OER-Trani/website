@@ -1,6 +1,18 @@
 .h {
-    align-items: center;
-    display: flex;
-    gap: 1rem;
-    white-space: break-spaces;
+  padding: 1rem;
+}
+
+.r1,
+.r2 {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.r1 {
+  justify-content: space-between;
+}
+
+.r2 {
+  white-space: break-spaces;
 }
