@@ -33,7 +33,7 @@ export interface Acf {
   text: Text;
   link: Link;
   image: Image;
-  parent_widget_id: string;
+  parent_widget_id: number[] | null | '';
   show_title: boolean;
   position: 'fondo pagina' | 'colonna laterale' | 'intestazione';
 }

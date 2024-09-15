@@ -17,6 +17,11 @@ export function useWidget({ enabled, id, queryClient }: UseWidgetParams) {
   return useWidgets<WidgetPostType>({ enabled, select, queryClient });
 }
 
+export function useWidgetChildrenIds({ enabled, id, queryClient }: UseWidgetParams) {
+  const select = (data: QueryFnGetWidgetsOutput) => data.widgetIdsByParentId[id];
+  return useWidgets<number[]>({ enabled, select, queryClient });
+}
+
 interface UseWidgetsParams<Data> {
   enabled: boolean;
   queryClient: QueryClient;
@@ -59,7 +64,6 @@ async function queryFnGetWidgets(): Promise<QueryFnGetWidgetsOutput> {
     output = widgetsResponse.reduce((acc, widgetData) => {
       const id = widgetData.id;
       const position = widgetData.acf.position;
-      const parentId = +widgetData.acf.parent_widget_id;
       const isParent = !isChild(widgetData);
 
       if (isParent) {
@@ -71,11 +75,19 @@ async function queryFnGetWidgets(): Promise<QueryFnGetWidgetsOutput> {
           },
         };
       } else {
+        const parents = (widgetData.acf.parent_widget_id || []).reduce(
+          (init, parentId) => ({
+            ...init,
+            [parentId]: [id, ...(acc.widgetIdsByParentId[parentId] || [])],
+          }),
+          {},
+        );
+
         return {
           ...acc,
           widgetIdsByParentId: {
             ...acc.widgetIdsByParentId,
-            [parentId]: [id, ...(acc.widgetIdsByParentId[parentId] || [])],
+            ...parents,
           },
         };
       }

@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { QueryClient } from '@tanstack/react-query';
 import { describe, beforeEach, it, expect, vi } from 'vitest';
-import { useWidget, useWidgets } from '.';
+import { useWidget, useWidgetChildrenIds, useWidgets } from '.';
 import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
 import { renderHook, waitFor } from '@testing-library/react';
 import * as getWidgetsMock from '../../lib/wpapi/features/widgets';
@@ -33,7 +33,7 @@ const mockWidgetsResponse: WidgetPostType[] = [
     title: 'Widget 4',
     acf: {
       position: 'fondo pagina',
-      parent_widget_id: 3,
+      parent_widget_id: [3],
     },
   },
 ] as unknown as WidgetPostType[];
@@ -115,5 +115,25 @@ describe('useWidget', () => {
     // assert
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
     expect(result.current.data).toEqual(mockWidgetsResponse[0]);
+  });
+});
+
+describe('useWidgetChildrenIds', () => {
+  let queryClient: QueryClient;
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    queryClient = new QueryClient();
+    vi.spyOn(getWidgetsMock, 'getWidgets').mockResolvedValue(mockWidgetsResponse);
+  });
+
+  it("should return only the required widget' children", async () => {
+    // arrange
+    const id = mockWidgetsResponse[2].id;
+    // act
+    const { result } = renderHook(() => useWidgetChildrenIds({ enabled: true, queryClient, id }));
+    // assert
+    await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
+    expect(result.current.data).toEqual([mockWidgetsResponse[3].id]);
   });
 });

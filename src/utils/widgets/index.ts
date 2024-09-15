@@ -14,5 +14,5 @@ export function getWidgetType(data: WidgetPostType) {
 }
 
 export function isChild(data: WidgetPostType) {
-  return !!data.acf.parent_widget_id;
+  return !!data.acf.parent_widget_id?.length;
 }
