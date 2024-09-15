@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useQuery, type QueryClient } from '@tanstack/react-query';
-import wpClient from '../../lib/wpapi/client';
-import { getPages } from '../../lib/wpapi/features/pages';
+import { makeWpApiCall } from '../../lib/wpapi/features';
+import { wpPages } from '../../lib/wpapi/features/pages';
 import type { PageType } from '../../lib/wpapi/types/page';
 
-interface IuseGetPageParams {
-  id: number;
+interface IuseGetPageBySlug {
   queryClient: QueryClient;
+  slug: string;
 }
 
-export function useGetPage({ id, queryClient }: IuseGetPageParams) {
-  const select = (data: QueryFnGetPagesOutput) => data.pages[id];
+export function useGetPageBySlug({ queryClient, slug }: IuseGetPageBySlug) {
+  // @ts-ignore
+  const select = (data: QueryFnGetPagesOutput) => data.pagesBySlug[slug];
   return useGetPages<PageType>({ select, queryClient });
 }
 
@@ -34,11 +36,9 @@ export function useGetPages<T = QueryFnGetPagesOutput>({
 
 type QueryFnGetPagesOutput = Awaited<ReturnType<typeof queryFnGetPages>>;
 
-async function queryFnGetPages(): Promise<{
-  pages: Record<number, PageType>;
-  pageIds: number[];
-}> {
-  const response = await getPages(wpClient);
+async function queryFnGetPages() {
+  const cb = async () => wpPages.perPage(10);
+  const response = await makeWpApiCall<PageType[]>(cb());
 
   if (response) {
     const pages = response.reduce(
@@ -48,10 +48,19 @@ async function queryFnGetPages(): Promise<{
       }),
       {},
     );
+    const pagesBySlug = response.reduce(
+      (acc, current) => ({
+        ...acc,
+        [current.slug]: current,
+      }),
+      {},
+    );
 
     return {
       pages,
       pageIds: response.map((page) => page.id).reverse(),
+      pagesBySlug,
+      pageSlugs: response.map((page) => page.slug).reverse(),
     };
   }
 

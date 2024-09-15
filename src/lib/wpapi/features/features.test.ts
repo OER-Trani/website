@@ -2,7 +2,6 @@ import { describe, expect, it, vi } from 'vitest';
 import type WPAPI from 'wpapi';
 import { getCategories } from './categories';
 import { getMedia } from './media';
-import { getPage, getPages } from './pages';
 import { getPost, getPosts } from './posts';
 
 describe.each([
@@ -48,45 +47,12 @@ describe.each([
   });
 });
 
-describe('getPages', () => {
-  it('should return items when the API call is successful', async () => {
-    const response = [
-      { id: 1, name: 'Page 1' },
-      { id: 2, name: 'Page 2' },
-    ];
-    const clientMock = {
-      pages: () => ({ perPage: vi.fn().mockResolvedValue(response) }),
-    } as unknown as WPAPI;
-
-    const result = await getPages(clientMock);
-
-    expect(result).toEqual(response);
-  });
-
-  it('should return null when the API call is not successful', async () => {
-    const clientMock = {
-      pages: () => ({ perPage: vi.fn().mockRejectedValue(new Error('fake')) }),
-    } as unknown as WPAPI;
-
-    const result = await getPages(clientMock);
-
-    expect(result).toEqual(null);
-  });
-});
-
 describe.each([
   {
     description: 'getPost',
     mockMethod: 'posts',
     method: getPost,
     responseOk: { id: 1, name: 'Post 1' },
-    responseKO: null,
-  },
-  {
-    description: 'getPage',
-    mockMethod: 'pages',
-    method: getPage,
-    responseOk: { id: 1, name: 'Page 1' },
     responseKO: null,
   },
   {

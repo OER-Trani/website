@@ -1,21 +1,21 @@
-import { useGetPage, useGetPages } from '../../../hooks/pages';
+import { useGetPageBySlug, useGetPages } from '../../../hooks/pages';
 import { queryClient } from '../../../lib/react-query/constants';
 
 export default function Nav() {
-  const { data: { pageIds = [] } = {} } = useGetPages({ queryClient });
+  const { data: { pageSlugs = [] } = {} } = useGetPages({ queryClient });
 
   return (
     <nav>
       <a href="/posts">Notizie</a>
-      {pageIds.map((id) => (
-        <PageNavItem key={id} id={id} />
+      {pageSlugs.map((slug) => (
+        <PageNavItem key={slug} slug={slug} />
       ))}
     </nav>
   );
 }
 
-function PageNavItem({ id }: { id: number }) {
-  const { data: page } = useGetPage({ id, queryClient });
+function PageNavItem({ slug }: { slug: string }) {
+  const { data: page } = useGetPageBySlug({ slug, queryClient });
 
-  return <a href={'/page/' + id}>{page?.title.rendered}</a>;
+  return <a href={'/page/' + slug}>{page?.title.rendered}</a>;
 }
