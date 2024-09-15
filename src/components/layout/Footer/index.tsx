@@ -5,10 +5,11 @@ import styles from './styles.module.css';
 
 export default function Footer() {
   const { data } = useWidgets({ enabled: true, queryClient });
-  const widgets = data?.widgetsByPosition['fondo pagina'];
+  const widgetIds = data?.widgetIdsByPosition['fondo pagina'];
+
   return (
     <footer className={styles.f}>
-      {widgets?.map((widget) => <WidgetComponent key={widget.id} widget={widget} />)}
+      {widgetIds?.map((widget) => <WidgetComponent key={widget} id={widget} />)}
     </footer>
   );
 }

@@ -3,6 +3,7 @@ import type { QueryClient } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import { getWidgets, widgets } from '../../lib/wpapi/features/widgets';
 import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
+import { isChild } from '../../utils/widgets';
 
 interface UseWidgetParams {
   enabled: boolean;
@@ -39,32 +40,52 @@ export function useWidgets<TData = QueryFnGetWidgetsOutput>({
 }
 
 export interface QueryFnGetWidgetsOutput {
-  widgetsByPosition: Record<WidgetPostType['acf']['position'], WidgetPostType[]>;
+  widgetIdsByPosition: Record<WidgetPostType['acf']['position'], number[]>;
   widgets: WidgetPostType[];
+  widgetIdsByParentId: Record<number, number[]>;
 }
 
 async function queryFnGetWidgets(): Promise<QueryFnGetWidgetsOutput> {
-  let widgetsByPosition = {
-    intestazione: [],
-    'fondo pagina': [],
-    'colonna laterale': [],
+  let output = {
+    widgetIdsByPosition: {
+      intestazione: [],
+      'fondo pagina': [],
+      'colonna laterale': [],
+    },
+    widgetIdsByParentId: {} as QueryFnGetWidgetsOutput['widgetIdsByParentId'],
   };
   const widgetsResponse = await getWidgets(widgets);
   if (widgetsResponse) {
-    widgetsByPosition = widgetsResponse.reduce((acc, widgetData) => {
+    output = widgetsResponse.reduce((acc, widgetData) => {
+      const id = widgetData.id;
       const position = widgetData.acf.position;
-      if (acc[position].length) {
+      const parentId = +widgetData.acf.parent_widget_id;
+      const isParent = !isChild(widgetData);
+
+      if (isParent) {
         return {
           ...acc,
-          [position]: [widgetData, ...acc[position]],
+          widgetIdsByPosition: {
+            ...acc.widgetIdsByPosition,
+            [position]: [id, ...(acc.widgetIdsByPosition[position] || [])],
+          },
+        };
+      } else {
+        return {
+          ...acc,
+          widgetIdsByParentId: {
+            ...acc.widgetIdsByParentId,
+            [parentId]: [id, ...(acc.widgetIdsByParentId[parentId] || [])],
+          },
         };
       }
-      return {
-        ...acc,
-        [position]: [widgetData],
-      };
-    }, widgetsByPosition);
-    return { widgetsByPosition, widgets: widgetsResponse };
+    }, output);
+
+    return {
+      widgetIdsByPosition: output.widgetIdsByPosition,
+      widgets: widgetsResponse,
+      widgetIdsByParentId: output.widgetIdsByParentId,
+    };
   }
-  return { widgetsByPosition, widgets: [] };
+  return { widgetIdsByPosition: output.widgetIdsByPosition, widgets: [], widgetIdsByParentId: {} };
 }

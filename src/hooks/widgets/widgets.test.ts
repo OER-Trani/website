@@ -6,7 +6,7 @@ import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
 import { renderHook, waitFor } from '@testing-library/react';
 import * as getWidgetsMock from '../../lib/wpapi/features/widgets';
 
-const mockWidgetsResponse = [
+const mockWidgetsResponse: WidgetPostType[] = [
   {
     id: 1,
     title: 'Widget 1',
@@ -28,6 +28,14 @@ const mockWidgetsResponse = [
       position: 'fondo pagina',
     },
   },
+  {
+    id: 4,
+    title: 'Widget 4',
+    acf: {
+      position: 'fondo pagina',
+      parent_widget_id: 3,
+    },
+  },
 ] as unknown as WidgetPostType[];
 
 describe('useWidgets', () => {
@@ -45,12 +53,23 @@ describe('useWidgets', () => {
     // assert
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
     const { data } = result.current;
-    expect(data?.widgetsByPosition).toEqual({
-      intestazione: [mockWidgetsResponse[0]],
-      'fondo pagina': [mockWidgetsResponse[2], mockWidgetsResponse[1]],
+    expect(data?.widgetIdsByPosition).toEqual({
+      intestazione: [mockWidgetsResponse[0].id],
+      'fondo pagina': [mockWidgetsResponse[2].id, mockWidgetsResponse[1].id],
       'colonna laterale': [],
     });
     expect(data?.widgets).toEqual(mockWidgetsResponse);
+  });
+
+  it('should return widgets grouped by parent ID when enabled is true', async () => {
+    // act
+    const { result } = renderHook(() => useWidgets({ enabled: true, queryClient }));
+    // assert
+    await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
+    const { data } = result.current;
+    expect(data?.widgetIdsByParentId).toEqual({
+      3: [mockWidgetsResponse[3].id],
+    });
   });
 
   it('should return empty data when the response is null', async () => {
@@ -61,12 +80,13 @@ describe('useWidgets', () => {
     // assert
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
     const { data } = result.current;
-    expect(data?.widgetsByPosition).toEqual({
+    expect(data?.widgetIdsByPosition).toEqual({
       intestazione: [],
       'fondo pagina': [],
       'colonna laterale': [],
     });
     expect(data?.widgets).toEqual([]);
+    expect(data?.widgetIdsByParentId).toEqual({});
   });
 
   it('should not fetch widgets when enabled is false', async () => {

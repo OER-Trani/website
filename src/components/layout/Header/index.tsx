@@ -5,7 +5,8 @@ import styles from './styles.module.css';
 
 export default function Header() {
   const { data } = useWidgets({ enabled: true, queryClient });
-  const widgets = data?.widgetsByPosition.intestazione;
+  const widgetIds = data?.widgetIdsByPosition['intestazione'];
+
   return (
     <header className={styles.h}>
       <div className={styles.r1}>
@@ -13,7 +14,7 @@ export default function Header() {
         <a href="/login">Accedi</a>
       </div>
       <div className={styles.r2}>
-        {widgets?.map((widget) => <WidgetComponent key={widget.id} widget={widget} />)}
+        {widgetIds?.map((widget) => <WidgetComponent key={widget} id={widget} />)}
       </div>
     </header>
   );

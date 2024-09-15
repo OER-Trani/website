@@ -5,11 +5,11 @@ import styles from './styles.module.css';
 
 export default function Aside() {
   const { data } = useWidgets({ enabled: true, queryClient });
-  const widgets = data?.widgetsByPosition['colonna laterale'];
+  const widgetIds = data?.widgetIdsByPosition['colonna laterale'];
 
   return (
     <aside className={styles.a}>
-      {widgets?.map((widget) => <WidgetComponent key={widget.id} widget={widget} />)}
+      {widgetIds?.map((widget) => <WidgetComponent key={widget} id={widget} />)}
     </aside>
   );
 }

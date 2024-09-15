@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import type { WidgetPostType } from '../../../lib/wpapi/types/widgets';
+import { useWidget } from '../../../hooks/widgets';
+import { queryClient } from '../../../lib/react-query/constants';
 import { getWidgetType } from '../../../utils/widgets';
 import ImageWidgetComponent from '../Image';
 import LinkWidgetComponent from '../Link';
@@ -13,11 +14,13 @@ const componentMap = {
 };
 
 interface WidgetComponentProps {
-  widget: WidgetPostType;
+  id: number;
 }
 
-export default function WidgetComponent({ widget }: WidgetComponentProps) {
-  const type = getWidgetType(widget);
+export default function WidgetComponent({ id }: WidgetComponentProps) {
+  const { data: widget } = useWidget({ id, enabled: true, queryClient });
+  const type = widget && getWidgetType(widget);
+  // const childrenComponent = TODO
   if (!type) return null;
   const Component = componentMap[type];
   const props = widget.acf[type];
