@@ -1,12 +1,3 @@
-import type WPAPI from 'wpapi';
-import { MediaType } from '../types/media';
+import wpClient from '../client';
 
-export async function getMedia(client: WPAPI, id: number) {
-  try {
-    const items: MediaType = await client.media().id(id);
-    return items;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
+export const wpMedia = wpClient.media();

@@ -1,11 +1,3 @@
-import type WPAPI from 'wpapi';
+import wpClient from '../client';
 
-export async function getCategories(client: WPAPI) {
-  try {
-    const items = await client.categories();
-    return items;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
+export const wpCategories = wpClient.categories();

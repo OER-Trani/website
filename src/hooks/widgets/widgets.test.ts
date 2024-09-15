@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 import { QueryClient } from '@tanstack/react-query';
-import { describe, beforeEach, it, expect, vi } from 'vitest';
-import { useWidget, useWidgetChildrenIds, useWidgets } from '.';
-import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
 import { renderHook, waitFor } from '@testing-library/react';
-import * as getWidgetsMock from '../../lib/wpapi/features/widgets';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { useWidget, useWidgetChildrenIds, useWidgets } from '.';
+import * as mock from '../../lib/wpapi/features';
+import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
 
 const mockWidgetsResponse: WidgetPostType[] = [
   {
@@ -44,7 +44,7 @@ describe('useWidgets', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     queryClient = new QueryClient();
-    vi.spyOn(getWidgetsMock, 'getWidgets').mockResolvedValue(mockWidgetsResponse);
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockWidgetsResponse);
   });
 
   it('should return widgets grouped by position when enabled is true', async () => {
@@ -74,7 +74,7 @@ describe('useWidgets', () => {
 
   it('should return empty data when the response is null', async () => {
     // arrange
-    vi.spyOn(getWidgetsMock, 'getWidgets').mockResolvedValue(null);
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
     // act
     const { result } = renderHook(() => useWidgets({ enabled: true, queryClient }));
     // assert
@@ -104,7 +104,7 @@ describe('useWidget', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     queryClient = new QueryClient();
-    vi.spyOn(getWidgetsMock, 'getWidgets').mockResolvedValue(mockWidgetsResponse);
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockWidgetsResponse);
   });
 
   it('should return only the required widget', async () => {
@@ -124,7 +124,7 @@ describe('useWidgetChildrenIds', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     queryClient = new QueryClient();
-    vi.spyOn(getWidgetsMock, 'getWidgets').mockResolvedValue(mockWidgetsResponse);
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockWidgetsResponse);
   });
 
   it("should return only the required widget' children", async () => {
