@@ -26,16 +26,6 @@ describe.each([
     ],
     responseKO: null,
   },
-  {
-    description: 'getPages',
-    mockMethod: 'pages',
-    method: getPages,
-    responseOk: [
-      { id: 1, name: 'Page 1' },
-      { id: 2, name: 'Page 2' },
-    ],
-    responseKO: null,
-  },
 ])('$description', ({ responseOk, responseKO, mockMethod, method }) => {
   it('should return items when the API call is successful', async () => {
     const clientMock = {
@@ -55,6 +45,32 @@ describe.each([
     const result = await method(clientMock);
 
     expect(result).toEqual(responseKO);
+  });
+});
+
+describe('getPages', () => {
+  it('should return items when the API call is successful', async () => {
+    const response = [
+      { id: 1, name: 'Page 1' },
+      { id: 2, name: 'Page 2' },
+    ];
+    const clientMock = {
+      pages: () => ({ perPage: vi.fn().mockResolvedValue(response) }),
+    } as unknown as WPAPI;
+
+    const result = await getPages(clientMock);
+
+    expect(result).toEqual(response);
+  });
+
+  it('should return null when the API call is not successful', async () => {
+    const clientMock = {
+      pages: () => ({ perPage: vi.fn().mockRejectedValue(new Error('fake')) }),
+    } as unknown as WPAPI;
+
+    const result = await getPages(clientMock);
+
+    expect(result).toEqual(null);
   });
 });
 
