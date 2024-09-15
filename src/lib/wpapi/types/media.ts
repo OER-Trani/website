@@ -1,3 +1,5 @@
+import type { About, Collection, Guid, Self, Title } from './post';
+
 export interface MediaType {
   id: number;
   date: string;
@@ -15,7 +17,6 @@ export interface MediaType {
   comment_status: string;
   ping_status: string;
   template: string;
-  meta: Meta;
   class_list: string[];
   description: Description;
   caption: Caption;
@@ -26,18 +27,6 @@ export interface MediaType {
   post: number;
   source_url: string;
   _links: Links;
-}
-
-export interface Guid {
-  rendered: string;
-}
-
-export interface Title {
-  rendered: string;
-}
-
-export interface Meta {
-  _acf_changed: boolean;
 }
 
 export interface Description {
@@ -80,18 +69,6 @@ export interface Links {
   about: About[];
   author: Author[];
   replies: Reply[];
-}
-
-export interface Self {
-  href: string;
-}
-
-export interface Collection {
-  href: string;
-}
-
-export interface About {
-  href: string;
 }
 
 export interface Author {

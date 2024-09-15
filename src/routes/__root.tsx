@@ -5,6 +5,7 @@ import type { QueryClient } from '@tanstack/react-query';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Aside from '../components/layout/Aside';
+import Nav from '../components/layout/Nav';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -26,6 +27,7 @@ function RootComponent() {
   return (
     <>
       <Header />
+      <Nav />
       <main>
         <Outlet />
       </main>
