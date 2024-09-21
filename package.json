@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run --coverage",
-    "test:watch": "vitest watch run --coverage"
+    "test:watch": "vitest watch --coverage"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.55.0",
