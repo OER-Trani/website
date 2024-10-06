@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useGetPosts } from '../../hooks/posts';
 import { queryClient } from '../../lib/react-query/constants';
 import sanitizePostContent from '../../lib/sanitize-html';
+import styles from './styles.module.css';
 
 interface PostProps {
   id: number;
@@ -21,7 +22,7 @@ export default function Post({ id, page, showExcerpt = false }: PostProps) {
 
   return (
     <li>
-      <article>
+      <article className={styles.post}>
         <h2>{post.title.rendered}</h2>
         <div dangerouslySetInnerHTML={{ __html: sanizedContent }} />
       </article>
