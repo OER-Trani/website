@@ -1,4 +1,17 @@
 .f {
   background-color: var(--gray-color-light);
+  white-space: break-spaces;
+}
+
+.f > div {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
   text-align: center;
+}
+
+.f img {
+  max-height: 10rem;
+  width: auto;
 }

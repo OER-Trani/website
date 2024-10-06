@@ -10,8 +10,8 @@ export default function Aside() {
   return (
     <aside className={styles.a}>
       {widgetIds?.map((widget) => (
-        <section className={styles.s}>
-          <WidgetComponent key={widget} id={widget} />
+        <section className={styles.s} key={widget}>
+          <WidgetComponent id={widget} />
         </section>
       ))}
     </aside>

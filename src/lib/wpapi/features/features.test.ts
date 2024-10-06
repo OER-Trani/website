@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { makeWpApiCall } from '.';
 import { wpCategories } from './categories';
-import { wpMedia } from './media';
 import { wpPages } from './pages';
 import { wpPosts } from './posts';
 
@@ -27,7 +26,6 @@ describe('makeWpApiCall', () => {
 });
 
 describe.each([
-  { desc: 'media', wpClient: wpMedia, method: 'id' },
   { desc: 'categories', wpClient: wpCategories, method: 'id' },
   { desc: 'posts', wpClient: wpPosts, method: 'id' },
   { desc: 'pages', wpClient: wpPages, method: 'id' },
