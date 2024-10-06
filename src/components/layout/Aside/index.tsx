@@ -9,7 +9,11 @@ export default function Aside() {
 
   return (
     <aside className={styles.a}>
-      {widgetIds?.map((widget) => <WidgetComponent key={widget} id={widget} />)}
+      {widgetIds?.map((widget) => (
+        <section className={styles.s}>
+          <WidgetComponent key={widget} id={widget} />
+        </section>
+      ))}
     </aside>
   );
 }

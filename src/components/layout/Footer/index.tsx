@@ -8,8 +8,10 @@ export default function Footer() {
   const widgetIds = data?.widgetIdsByPosition['fondo pagina'];
 
   return (
-    <footer className={styles.f}>
-      {widgetIds?.map((widget) => <WidgetComponent key={widget} id={widget} />)}
+    <footer className={`${styles.f}`}>
+      <div className={`container`}>
+        {widgetIds?.map((widget) => <WidgetComponent key={widget} id={widget} />)}
+      </div>
     </footer>
   );
 }
