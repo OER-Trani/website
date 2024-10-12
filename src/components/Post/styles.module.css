@@ -2,3 +2,11 @@
   height: auto;
   max-width: 100%;
 }
+
+.excerpt p {
+  display: none;
+}
+
+.excerpt p:first-of-type {
+  display: block;
+}

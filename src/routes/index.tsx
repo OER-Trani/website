@@ -1,16 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import StickyPosts from '../components/StickyPosts';
-import Posts from '../components/Posts';
+import Home from '../components/pages/Home';
 
 export const Route = createFileRoute('/')({
   component: Home,
 });
-
-function Home() {
-  return (
-    <>
-      <StickyPosts />
-      <Posts />
-    </>
-  );
-}

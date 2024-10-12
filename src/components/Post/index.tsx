@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useGetPosts } from '../../hooks/posts';
 import { queryClient } from '../../lib/react-query/constants';
 import sanitizePostContent from '../../lib/sanitize-html';
+import homeStyles from '../pages/Home/styles.module.css';
 import styles from './styles.module.css';
 
 interface PostProps {
@@ -21,9 +22,9 @@ export default function Post({ id, page, showExcerpt = false }: PostProps) {
   }
 
   return (
-    <li>
+    <li className={`${homeStyles.item} ${showExcerpt ? styles.excerpt : ''} `}>
       <article className={styles.post}>
-        <h2>{post.title.rendered}</h2>
+        <h3>{post.title.rendered}</h3>
         <div dangerouslySetInnerHTML={{ __html: sanizedContent }} />
       </article>
     </li>

@@ -1,0 +1,27 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0 3rem;
+}
+
+.item {
+  /* max-height: 35rem; 
+  overflow: hidden;*/
+  position: relative;
+}
+
+/* .item article > div {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+} */
+
+.posts {
+  margin-top: 5rem;
+}
