@@ -1,0 +1,42 @@
+.h,
+.h a,
+.h a:hover {
+  color: black;
+}
+
+.r1,
+.r2 {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.r1w {
+  background-color: var(--primary-color-light);
+}
+
+.r1 {
+  justify-content: space-between;
+}
+
+.r1 > h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.r1 > a {
+  font-size: 1.6rem;
+}
+
+.r2 {
+  white-space: break-spaces;
+}
+
+.r2 > img {
+  margin-right: 2rem;
+}
+
+.r2 > p {
+  text-transform: capitalize;
+}

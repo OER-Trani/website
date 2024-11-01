@@ -1,0 +1,20 @@
+.w {
+  background-color: var(--primary-color-dark);
+  grid-area: nav;
+}
+
+.w > nav {
+  display: flex;
+  gap: 4rem;
+  padding: 2.5rem 2rem;
+}
+
+.w a {
+  color: #fff;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.w a:hover {
+  text-decoration: underline;
+}
