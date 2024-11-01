@@ -27,8 +27,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    env:
-      VITE_CMS_API_ENDPOINT: ${{ env.CMS_API_ENDPOINT }}
     steps:
       - uses: pnpm/action-setup@v2
         with:
@@ -43,6 +41,8 @@ jobs:
       - name: Install dependencies
         run: pnpm i
       - name: Build
+        env:
+          VITE_CMS_API_ENDPOINT: ${{ env.CMS_API_ENDPOINT }}
         run: pnpm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
