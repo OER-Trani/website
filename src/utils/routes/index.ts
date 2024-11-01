@@ -1,4 +1,4 @@
-const GITHUB_PAGES_PATH = '/dist/#';
+const GITHUB_PAGES_PATH = '/website/#';
 
 function getBasePath() {
   if (isGhPage()) return GITHUB_PAGES_PATH;
