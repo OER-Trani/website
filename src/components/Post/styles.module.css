@@ -1,12 +1,29 @@
+.item {
+  border: 1px solid var(--gray-color-dark);
+  border-radius: 0.5rem;
+  margin-top: 5rem;
+  padding: 1rem;
+  position: relative;
+}
+
 .post img {
   height: auto;
   max-width: 100%;
 }
 
-.excerpt p {
-  display: none;
+.post a {
+  color: var(--gray-color-dark);
 }
 
-.excerpt p:first-of-type {
+.date {
+  background-color: var(--primary-color-dark);
+  border-radius: 0.5rem;
+  color: var(--gray-color-light);
   display: block;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  text-transform: capitalize;
+  top: -5rem;
+  width: min-content;
 }

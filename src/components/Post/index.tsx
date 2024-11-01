@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import sanitizePostContent from '../../lib/sanitize-html';
 import { PostType } from '../../lib/wpapi/types/post';
-import homeStyles from '../pages/Home/styles.module.css';
 import styles from './styles.module.css';
 
 interface PostProps {
@@ -17,10 +16,21 @@ export default function Post({ post, showExcerpt = false }: PostProps) {
     return null;
   }
 
+  const date = new Intl.DateTimeFormat('it', {
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'Europe/Rome',
+  }).format(new Date(post.modified_gmt));
+
   return (
-    <li className={`${homeStyles.item} ${showExcerpt ? styles.excerpt : ''} `}>
+    <li className={styles.item}>
       <article className={styles.post}>
-        <h3>{post.title.rendered}</h3>
+        <a href={''}>
+          <h3>{post.title.rendered}</h3>
+        </a>
+        <time dateTime={post.modified} className={styles.date}>
+          {date}
+        </time>
         <div dangerouslySetInnerHTML={{ __html: sanizedContent }} />
       </article>
     </li>
