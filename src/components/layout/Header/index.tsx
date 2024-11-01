@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useWidgets } from '../../../hooks/widgets';
 import { queryClient } from '../../../lib/react-query/constants';
 import { getHomeLink } from '../../../utils/routes';
@@ -14,7 +15,7 @@ export default function Header() {
       <div className={styles.r1w}>
         <div className={`container ${styles.r1}`}>
           <h1>
-            <a href={link}>OER Trani</a>
+            <Link to={link}>OER Trani</Link>
           </h1>
           <a href="/login">Accedi</a>
         </div>

@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import sanitizePostContent from '../../lib/sanitize-html';
 import { PostType } from '../../lib/wpapi/types/post';
@@ -28,9 +29,9 @@ export default function Post({ post, showExcerpt = false }: PostProps) {
   return (
     <li className={styles.item}>
       <article className={styles.post}>
-        <a href={link}>
+        <Link href={link}>
           <h3>{post.title.rendered}</h3>
-        </a>
+        </Link>
         <time dateTime={post.modified} className={styles.date}>
           {date}
         </time>
