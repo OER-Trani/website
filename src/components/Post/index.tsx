@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import sanitizePostContent from '../../lib/sanitize-html';
 import { PostType } from '../../lib/wpapi/types/post';
+import { getPostLink } from '../../utils/routes';
 import styles from './styles.module.css';
 
 interface PostProps {
@@ -22,10 +23,12 @@ export default function Post({ post, showExcerpt = false }: PostProps) {
     timeZone: 'Europe/Rome',
   }).format(new Date(post.modified_gmt));
 
+  const link = getPostLink({ id: post.id, slug: post.slug });
+
   return (
     <li className={styles.item}>
       <article className={styles.post}>
-        <a href={''}>
+        <a href={link}>
           <h3>{post.title.rendered}</h3>
         </a>
         <time dateTime={post.modified} className={styles.date}>

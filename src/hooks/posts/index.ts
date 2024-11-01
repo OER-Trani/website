@@ -3,6 +3,55 @@ import { makeWpApiCall } from '../../lib/wpapi/features';
 import { wpPosts } from '../../lib/wpapi/features/posts';
 import type { PostType } from '../../lib/wpapi/types/post';
 
+interface UseGetPostParams {
+  id: number;
+  queryClient: QueryClient;
+}
+
+export function useGetPost({ id, queryClient }: UseGetPostParams) {
+  const cachedPost = getPostFromCache({ id, queryClient });
+  const result = useQuery(
+    {
+      enabled: !cachedPost,
+      queryKey: ['post', id],
+      queryFn: () =>
+        queryFnGetPost({
+          id,
+        }),
+    },
+    queryClient,
+  );
+
+  return cachedPost || result.data;
+}
+
+interface GetPostsParams {
+  id: number;
+}
+
+function getPostFromCache({ id, queryClient }: UseGetPostParams) {
+  const results = queryClient.getQueriesData<QueryFnGetPostsOutput>({ queryKey: ['posts'] });
+  let post: PostType | undefined;
+  results.forEach((result) => {
+    const state = result[1];
+    if (state?.posts?.[id]) {
+      post = state.posts[id];
+    }
+  });
+  return post;
+}
+
+async function queryFnGetPost({ id }: GetPostsParams) {
+  const cb = async () => wpPosts.id(id);
+  const response = await makeWpApiCall<PostType>(cb());
+
+  if (response) {
+    return response;
+  }
+
+  return null;
+}
+
 interface UseGetStickyPostsParams<Data> {
   queryClient: QueryClient;
   select?: (data: QueryFnGetPostsOutput) => Data;

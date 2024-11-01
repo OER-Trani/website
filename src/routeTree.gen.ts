@@ -12,11 +12,17 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as PostsPostIdSlugImport } from './routes/posts.$postId.$slug'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostsPostIdSlugRoute = PostsPostIdSlugImport.update({
+  path: '/posts/$postId/$slug',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -31,6 +37,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/posts/$postId/$slug': {
+      id: '/posts/$postId/$slug'
+      path: '/posts/$postId/$slug'
+      fullPath: '/posts/$postId/$slug'
+      preLoaderRoute: typeof PostsPostIdSlugImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -38,32 +51,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/posts/$postId/$slug': typeof PostsPostIdSlugRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/posts/$postId/$slug': typeof PostsPostIdSlugRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/posts/$postId/$slug': typeof PostsPostIdSlugRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/posts/$postId/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/posts/$postId/$slug'
+  id: '__root__' | '/' | '/posts/$postId/$slug'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PostsPostIdSlugRoute: typeof PostsPostIdSlugRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PostsPostIdSlugRoute: PostsPostIdSlugRoute,
 }
 
 export const routeTree = rootRoute
@@ -78,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/posts/$postId/$slug"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/posts/$postId/$slug": {
+      "filePath": "posts.$postId.$slug.tsx"
     }
   }
 }

@@ -2,9 +2,22 @@
 import { QueryClient } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { useGetPosts, useGetStickyPosts } from '.';
+import { useGetPost, useGetPosts, useGetStickyPosts } from '.';
 import * as mock from '../../lib/wpapi/features';
 import { PostType } from '../../lib/wpapi/types/post';
+
+vi.mock('../../lib/wpapi/features/posts', () => ({
+  wpPosts: {
+    id: vi.fn(),
+    perPage: () => ({
+      page: () => ({
+        sticky: () => ({
+          order: vi.fn(),
+        }),
+      }),
+    }),
+  },
+}));
 
 const mockPostsResponse: PostType[] = [
   {
@@ -82,5 +95,46 @@ describe('useGetPosts', () => {
     await waitFor(() => expect(result.current.isSuccess).toBeTruthy());
     expect(result.current.data?.postIds).toEqual([]);
     expect(result.current.data?.posts).toEqual({});
+  });
+});
+
+describe('useGetPost', () => {
+  let queryClient: QueryClient;
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    queryClient = new QueryClient();
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockPostsResponse[0]);
+  });
+
+  it('should fetch a post', async () => {
+    // act
+    const { result } = renderHook(() => useGetPost({ queryClient, id: mockPostsResponse[0].id }));
+    // assert
+    await waitFor(() => expect(result.current).toBeTruthy());
+    expect(result.current).toEqual(mockPostsResponse[0]);
+  });
+
+  it('should return null if the fetch fails', async () => {
+    // arrange
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    // act
+    const { result } = renderHook(() => useGetPost({ queryClient, id: mockPostsResponse[0].id }));
+    // assert
+    await waitFor(() => expect(result.current).toBeNull());
+  });
+
+  it('should return the cached post if any', async () => {
+    // arrange
+    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    queryClient.setQueryData(['posts'], {
+      posts: mockPostsResponse.reduce((acc, post) => ({ ...acc, [post.id]: post }), {}),
+      postIds: mockPostsResponse.map((post) => post.id),
+    });
+    // act
+    const { result } = renderHook(() => useGetPost({ queryClient, id: mockPostsResponse[0].id }));
+    // assert
+    await waitFor(() => expect(result.current).toBeTruthy());
+    expect(result.current).toEqual(mockPostsResponse[0]);
   });
 });
