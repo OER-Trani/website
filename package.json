@@ -7,6 +7,7 @@
     "node": "^20",
     "npm": "^10"
   },
+  "homepage": "https://oer-trani.github.io/website",
   "packageManager": "pnpm@9.5.0",
   "scripts": {
     "dev": "vite",
