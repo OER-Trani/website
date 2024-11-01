@@ -1,19 +1,15 @@
 import { useMemo } from 'react';
-import { useGetPosts } from '../../hooks/posts';
-import { queryClient } from '../../lib/react-query/constants';
 import sanitizePostContent from '../../lib/sanitize-html';
+import { PostType } from '../../lib/wpapi/types/post';
 import homeStyles from '../pages/Home/styles.module.css';
 import styles from './styles.module.css';
 
 interface PostProps {
-  id: number;
-  page: number;
-  showExcerpt?: boolean;
+  post: PostType | undefined;
+  showExcerpt: boolean;
 }
 
-export default function Post({ id, page, showExcerpt = false }: PostProps) {
-  const { data } = useGetPosts({ queryClient, page });
-  const post = data?.posts[id];
+export default function Post({ post, showExcerpt = false }: PostProps) {
   const text = showExcerpt ? post?.excerpt.rendered : post?.content.rendered;
   const sanizedContent = useMemo(() => text && sanitizePostContent(text), [text]);
 

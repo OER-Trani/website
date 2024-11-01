@@ -12,7 +12,9 @@ export default function Posts() {
     <section className={homeStyles.posts}>
       <h2>Ultimi articoli</h2>
       <ul className={homeStyles.list}>
-        {data?.postIds.map((id) => <Post key={id} id={id} page={page} showExcerpt={true} />)}
+        {data?.postIds.map((id) => (
+          <PostContainer key={id} id={id} page={page} showExcerpt={true} />
+        ))}
       </ul>
       <div>
         <button
@@ -28,4 +30,17 @@ export default function Posts() {
       </div>
     </section>
   );
+}
+
+interface PostProps {
+  id: number;
+  page: number;
+  showExcerpt?: boolean;
+}
+
+function PostContainer({ id, page, showExcerpt }: PostProps) {
+  const { data } = useGetPosts({ queryClient, page });
+  const post = data?.posts[id];
+
+  return <Post showExcerpt={!!showExcerpt} post={post} />;
 }

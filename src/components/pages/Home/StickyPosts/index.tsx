@@ -1,8 +1,6 @@
-import { useMemo } from 'react';
 import { useGetStickyPosts } from '../../../../hooks/posts';
 import { queryClient } from '../../../../lib/react-query/constants';
-import sanitizePostContent from '../../../../lib/sanitize-html';
-import styles from '../../../Post/styles.module.css';
+import Post from '../../../Post';
 import homeStyles from '../styles.module.css';
 
 export default function StickyPosts() {
@@ -10,33 +8,21 @@ export default function StickyPosts() {
   return (
     <>
       <h2>In evidenza</h2>
-      <ul className={homeStyles.list}>{data?.postIds.map((id) => <Post id={id} key={id} />)}</ul>
+      <ul className={homeStyles.list}>
+        {data?.postIds.map((id) => <PostContainer id={id} key={id} showExcerpt={true} />)}
+      </ul>
     </>
   );
 }
 
 interface PostProps {
   id: number;
+  showExcerpt: boolean;
 }
 
-function Post({ id }: PostProps) {
+function PostContainer({ id }: PostProps) {
   const { data } = useGetStickyPosts({ queryClient });
   const post = data?.posts[id];
-  const sanizedContent = useMemo(
-    () => post?.content.rendered && sanitizePostContent(post.content.rendered),
-    [post?.content.rendered],
-  );
 
-  if (!post || !sanizedContent) {
-    return null;
-  }
-
-  return (
-    <li className={homeStyles.item}>
-      <article className={styles.post}>
-        <h3>{post.title.rendered}</h3>
-        <div dangerouslySetInnerHTML={{ __html: sanizedContent }} />
-      </article>
-    </li>
-  );
+  return <Post showExcerpt={true} post={post} />;
 }
