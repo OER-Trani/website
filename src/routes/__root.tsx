@@ -4,16 +4,15 @@ import { createRootRouteWithContext, Link, Outlet } from '@tanstack/react-router
 import { lazy, Suspense } from 'react';
 import Layout from '../components/layout';
 
-const TanStackRouterDevtools =
-  import.meta.env.NODE_ENV === 'production'
-    ? () => null
-    : lazy(() =>
-        import('@tanstack/router-devtools').then((res) => ({
-          default: res.TanStackRouterDevtools,
-          // For Embedded Mode
-          // default: res.TanStackRouterDevtoolsPanel
-        })),
-      );
+const TanStackRouterDevtools = import.meta.env.PROD
+  ? () => null
+  : lazy(() =>
+      import('@tanstack/router-devtools').then((res) => ({
+        default: res.TanStackRouterDevtools,
+        // For Embedded Mode
+        // default: res.TanStackRouterDevtoolsPanel
+      })),
+    );
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
