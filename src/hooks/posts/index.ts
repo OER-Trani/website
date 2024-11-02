@@ -1,6 +1,6 @@
 import { useQuery, type QueryClient } from '@tanstack/react-query';
 import { getWpPost, getWpPosts } from '../../lib/wp-rest-api';
-import type { PostType } from '../../lib/wpapi/types/post';
+import type { PostType } from '../../lib/wp-rest-api/types/post';
 
 interface UseGetPostParams {
   id: number;

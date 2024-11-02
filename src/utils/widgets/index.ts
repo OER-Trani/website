@@ -1,4 +1,4 @@
-import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
+import type { WidgetPostType } from '../../lib/wp-rest-api/types/widgets';
 
 export function getWidgetType(data: WidgetPostType) {
   if (data.acf.text.text) {

@@ -2,7 +2,7 @@
 import { useQuery, type QueryClient } from '@tanstack/react-query';
 import { getWpPosts } from '../../lib/wp-rest-api';
 import { mapPath } from '../../lib/wp-rest-api/constants';
-import type { PageType } from '../../lib/wpapi/types/page';
+import type { PageType } from '../../lib/wp-rest-api/types/page';
 
 interface IuseGetPageBySlug {
   queryClient: QueryClient;

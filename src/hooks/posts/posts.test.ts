@@ -4,7 +4,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import { useGetPost, useGetPosts, useGetStickyPosts } from '.';
 import { getWpPost, getWpPosts } from '../../lib/wp-rest-api';
-import { PostType } from '../../lib/wpapi/types/post';
+import { PostType } from '../../lib/wp-rest-api/types/post';
 
 vi.mock('../../lib/wp-rest-api', () => ({
   getWpPost: vi.fn(),

@@ -3,7 +3,7 @@ import type { QueryClient } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import { mapPath } from '../../lib/wp-rest-api/constants';
 import { getWpWidgets } from '../../lib/wp-rest-api';
-import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
+import type { WidgetPostType } from '../../lib/wp-rest-api/types/widgets';
 import { isChild } from '../../utils/widgets';
 
 interface UseWidgetParams {
