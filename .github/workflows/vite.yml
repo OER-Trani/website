@@ -20,9 +20,6 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
-env:
-  VITE_CMS_API_ENDPOINT: ${{ secrets.CMS_API_ENDPOINT }}
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -45,7 +42,7 @@ jobs:
         run: pnpm i
       - name: Build
         env:
-          VITE_CMS_API_ENDPOINT: ${{ env.CMS_API_ENDPOINT }}
+          VITE_CMS_API_ENDPOINT: ${{ secrets.CMS_API_ENDPOINT }}
         run: pnpm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
