@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { QueryClient } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
-import { makeWpApiCall } from '../../lib/wpapi/features';
-import { wpWidgets } from '../../lib/wpapi/features/widgets';
-import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
+import { mapPath } from '../../lib/wp-rest-api/constants';
+import { getWpWidgets } from '../../lib/wp-rest-api';
+import type { WidgetPostType } from '../../lib/wp-rest-api/types/widgets';
 import { isChild } from '../../utils/widgets';
 
 interface UseWidgetParams {
@@ -60,8 +60,8 @@ async function queryFnGetWidgets(): Promise<QueryFnGetWidgetsOutput> {
     },
     widgetIdsByParentId: {} as QueryFnGetWidgetsOutput['widgetIdsByParentId'],
   };
-  const cb = async () => wpWidgets.status('publish').per_page('100');
-  const widgetsResponse = await makeWpApiCall<WidgetPostType[]>(cb());
+  const widgetsResponse = await getWpWidgets({ params: { per_page: 100 }, path: mapPath.widgets });
+  console.log({ widgetsResponse });
   if (widgetsResponse) {
     output = widgetsResponse.reduce((acc, widgetData) => {
       const id = widgetData.id;

@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useMemo } from 'react';
 import sanitizePostContent from '../../lib/sanitize-html';
-import { PostType } from '../../lib/wpapi/types/post';
+import { PostType } from '../../lib/wp-rest-api/types/post';
 import { getPostLink } from '../../utils/routes';
 import styles from './styles.module.css';
 

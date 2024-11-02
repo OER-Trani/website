@@ -1,5 +1,5 @@
 import { useGetMedia } from '../../../hooks/media';
-import { Image } from '../../../lib/wpapi/types/widgets';
+import { Image } from '../../../lib/wp-rest-api/types/widgets';
 
 export default function ImageWidgetComponent({ text, image_id }: Image) {
   const { data } = useGetMedia({ id: image_id });
