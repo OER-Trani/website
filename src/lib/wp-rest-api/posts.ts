@@ -1,5 +1,4 @@
 import { mapPath } from './constants';
-import { PostType } from './types/post';
 import { fetchWpRestApi, convertObjectInSearchParams } from './utils';
 
 interface GetPostsParams {
@@ -12,8 +11,8 @@ interface GetPostsParams {
   path?: string;
 }
 
-export async function getWpPosts({ params, path = mapPath.posts }: GetPostsParams) {
-  const posts = await fetchWpRestApi<PostType[]>({
+export async function getWpPosts<T>({ params, path = mapPath.posts }: GetPostsParams) {
+  const posts = await fetchWpRestApi<T[]>({
     path,
     params: new URLSearchParams(convertObjectInSearchParams(params)),
   });
@@ -21,8 +20,8 @@ export async function getWpPosts({ params, path = mapPath.posts }: GetPostsParam
   return posts;
 }
 
-export async function getWpPost({ id, path = mapPath.posts }: { id: number; path?: string }) {
-  const posts = await fetchWpRestApi<PostType[]>({
+export async function getWpPost<T>({ id, path = mapPath.posts }: { id: number; path?: string }) {
+  const posts = await fetchWpRestApi<T>({
     path: `${path}/${id}`,
     params: new URLSearchParams(),
   });

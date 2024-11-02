@@ -41,7 +41,7 @@ function getPostFromCache({ id, queryClient }: UseGetPostParams) {
 }
 
 async function queryFnGetPost({ id }: GetPostsParams) {
-  const response = await getWpPost({ id });
+  const response = await getWpPost<PostType>({ id });
 
   if (response) {
     return response;
@@ -108,7 +108,7 @@ interface ParamsType {
   sticky: boolean;
 }
 async function queryFnGetPosts({ limit, page, sticky }: ParamsType) {
-  const response = await getWpPosts({
+  const response = await getWpPosts<PostType>({
     params: { page, per_page: limit, order: 'desc', sticky },
   });
 
