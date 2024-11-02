@@ -1,6 +1,5 @@
 import { useQuery, type QueryClient } from '@tanstack/react-query';
-import { makeWpApiCall } from '../../lib/wpapi/features';
-import { wpPosts } from '../../lib/wpapi/features/posts';
+import { getWpPost, getWpPosts } from '../../lib/wp-rest-api';
 import type { PostType } from '../../lib/wpapi/types/post';
 
 interface UseGetPostParams {
@@ -42,8 +41,7 @@ function getPostFromCache({ id, queryClient }: UseGetPostParams) {
 }
 
 async function queryFnGetPost({ id }: GetPostsParams) {
-  const cb = async () => wpPosts.id(id);
-  const response = await makeWpApiCall<PostType>(cb());
+  const response = await getWpPost({ id });
 
   if (response) {
     return response;
@@ -110,8 +108,9 @@ interface ParamsType {
   sticky: boolean;
 }
 async function queryFnGetPosts({ limit, page, sticky }: ParamsType) {
-  const cb = async () => wpPosts.perPage(limit).page(page).sticky(sticky).order('desc');
-  const response = await makeWpApiCall<PostType[]>(cb());
+  const response = await getWpPosts({
+    params: { page, per_page: limit, order: 'desc', sticky },
+  });
 
   if (response) {
     const posts: Record<number, PostType> = response.reduce(

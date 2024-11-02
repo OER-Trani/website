@@ -1,22 +1,14 @@
 // @vitest-environment jsdom
 import { QueryClient } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import { useGetPost, useGetPosts, useGetStickyPosts } from '.';
-import * as mock from '../../lib/wpapi/features';
+import { getWpPost, getWpPosts } from '../../lib/wp-rest-api';
 import { PostType } from '../../lib/wpapi/types/post';
 
-vi.mock('../../lib/wpapi/features/posts', () => ({
-  wpPosts: {
-    id: vi.fn(),
-    perPage: () => ({
-      page: () => ({
-        sticky: () => ({
-          order: vi.fn(),
-        }),
-      }),
-    }),
-  },
+vi.mock('../../lib/wp-rest-api', () => ({
+  getWpPost: vi.fn(),
+  getWpPosts: vi.fn(),
 }));
 
 const mockPostsResponse: PostType[] = [
@@ -44,7 +36,7 @@ describe('useGetStickyPosts', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     queryClient = new QueryClient();
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockPostsResponse);
+    (getWpPosts as Mock).mockResolvedValue(mockPostsResponse);
   });
 
   it('should fetch sticky posts successfully', async () => {
@@ -58,7 +50,7 @@ describe('useGetStickyPosts', () => {
 
   it('should return null if the sticky posts fetch fails', async () => {
     // arrange
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    (getWpPosts as Mock).mockResolvedValue(null);
     // act
     const { result } = renderHook(() => useGetStickyPosts({ queryClient }));
     // assert
@@ -74,7 +66,7 @@ describe('useGetPosts', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     queryClient = new QueryClient();
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockPostsResponse);
+    (getWpPosts as Mock).mockResolvedValue(mockPostsResponse);
   });
 
   it('should fetch sticky posts successfully', async () => {
@@ -88,7 +80,7 @@ describe('useGetPosts', () => {
 
   it('should return null if the sticky posts fetch fails', async () => {
     // arrange
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    (getWpPosts as Mock).mockResolvedValue(null);
     // act
     const { result } = renderHook(() => useGetPosts({ queryClient, page: 1 }));
     // assert
@@ -104,7 +96,7 @@ describe('useGetPost', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     queryClient = new QueryClient();
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockPostsResponse[0]);
+    (getWpPost as Mock).mockResolvedValue(mockPostsResponse[0]);
   });
 
   it('should fetch a post', async () => {
@@ -117,7 +109,7 @@ describe('useGetPost', () => {
 
   it('should return null if the fetch fails', async () => {
     // arrange
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    (getWpPost as Mock).mockResolvedValue(null);
     // act
     const { result } = renderHook(() => useGetPost({ queryClient, id: mockPostsResponse[0].id }));
     // assert
@@ -126,7 +118,7 @@ describe('useGetPost', () => {
 
   it('should return the cached post if any', async () => {
     // arrange
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    (getWpPost as Mock).mockResolvedValue(null);
     queryClient.setQueryData(['posts'], {
       posts: mockPostsResponse.reduce((acc, post) => ({ ...acc, [post.id]: post }), {}),
       postIds: mockPostsResponse.map((post) => post.id),
