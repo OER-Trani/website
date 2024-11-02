@@ -7,7 +7,7 @@ interface GetPostsParams {
     per_page: number;
     order: 'asc' | 'desc';
     page: number;
-    sticky: boolean;
+    sticky?: boolean;
   };
   path?: string;
 }
