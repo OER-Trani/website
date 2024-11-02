@@ -20,6 +20,9 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
+env:
+  VITE_CMS_API_ENDPOINT: ${{ env.CMS_API_ENDPOINT }}
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
