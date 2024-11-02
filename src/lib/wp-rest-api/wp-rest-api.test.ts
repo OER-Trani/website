@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { getWpPost, getWpPosts } from './posts';
+import { getWpWidgets } from './widgets';
 
 global.fetch = vi.fn();
 
@@ -33,5 +34,21 @@ describe('getWpPost', () => {
       path,
     });
     expect(global.fetch).toHaveBeenCalledWith(`http://localhost/wp-json${path}/1?`);
+  });
+});
+
+describe('getWpWidgets', () => {
+  it('should fetch the correct URL', async () => {
+    const path = '/widgets';
+    await getWpWidgets({
+      params: {
+        per_page: 10,
+        order: 'asc',
+      },
+      path,
+    });
+    expect(global.fetch).toHaveBeenCalledWith(
+      `http://localhost/wp-json/widgets?per_page=10&order=asc`,
+    );
   });
 });

@@ -1,10 +1,14 @@
 // @vitest-environment jsdom
 import { QueryClient } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import { useWidget, useWidgetChildrenIds, useWidgets } from '.';
-import * as mock from '../../lib/wpapi/features';
-import type { WidgetPostType } from '../../lib/wpapi/types/widgets';
+import { getWpWidgets } from '../../lib/wp-rest-api';
+import type { WidgetPostType } from '../../lib/wp-rest-api/types/widgets';
+
+vi.mock('../../lib/wp-rest-api', () => ({
+  getWpWidgets: vi.fn(),
+}));
 
 const mockWidgetsResponse: WidgetPostType[] = [
   {
@@ -38,15 +42,14 @@ const mockWidgetsResponse: WidgetPostType[] = [
   },
 ] as unknown as WidgetPostType[];
 
+let queryClient: QueryClient;
+beforeEach(() => {
+  vi.clearAllMocks();
+  queryClient = new QueryClient();
+  (getWpWidgets as Mock).mockResolvedValue(mockWidgetsResponse);
+});
+
 describe('useWidgets', () => {
-  let queryClient: QueryClient;
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-    queryClient = new QueryClient();
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockWidgetsResponse);
-  });
-
   it('should return widgets grouped by position when enabled is true', async () => {
     // act
     const { result } = renderHook(() => useWidgets({ enabled: true, queryClient }));
@@ -74,7 +77,7 @@ describe('useWidgets', () => {
 
   it('should return empty data when the response is null', async () => {
     // arrange
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(null);
+    (getWpWidgets as Mock).mockResolvedValue(null);
     // act
     const { result } = renderHook(() => useWidgets({ enabled: true, queryClient }));
     // assert
@@ -99,14 +102,6 @@ describe('useWidgets', () => {
 });
 
 describe('useWidget', () => {
-  let queryClient: QueryClient;
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-    queryClient = new QueryClient();
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockWidgetsResponse);
-  });
-
   it('should return only the required widget', async () => {
     // arrange
     const id = mockWidgetsResponse[0].id;
@@ -119,14 +114,6 @@ describe('useWidget', () => {
 });
 
 describe('useWidgetChildrenIds', () => {
-  let queryClient: QueryClient;
-
-  beforeEach(() => {
-    vi.clearAllMocks();
-    queryClient = new QueryClient();
-    vi.spyOn(mock, 'makeWpApiCall').mockResolvedValue(mockWidgetsResponse);
-  });
-
   it("should return only the required widget' children", async () => {
     // arrange
     const id = mockWidgetsResponse[2].id;
