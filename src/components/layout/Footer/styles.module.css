@@ -1,5 +1,6 @@
 .f {
-  background-color: var(--gray-color-light);
+  background-color: var(--bg-color-5);
+  color: var(--text-color-5);
   white-space: break-spaces;
 }
 

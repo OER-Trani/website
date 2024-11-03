@@ -1,7 +1,11 @@
-.h,
+.h {
+  background-color: var(--bg-color-4);
+  color: var(--text-color-4);
+}
+
 .h a,
 .h a:hover {
-  color: black;
+  color: var(--text-color-4);
 }
 
 .r1,
@@ -13,7 +17,8 @@
 }
 
 .r1w {
-  background-color: var(--primary-color-light);
+  background-color: var(--bg-color-3);
+  color: var(--text-color-3);
 }
 
 .r1 {

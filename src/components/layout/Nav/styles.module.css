@@ -1,5 +1,6 @@
 .w {
-  background-color: var(--primary-color-dark);
+  background-color: var(--bg-color-2);
+  color: var(--text-color-2);
   grid-area: nav;
 }
 
