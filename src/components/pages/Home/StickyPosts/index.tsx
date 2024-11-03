@@ -1,10 +1,16 @@
 import { useGetStickyPosts } from '../../../../hooks/posts';
 import { queryClient } from '../../../../lib/react-query/constants';
+import Loader from '../../../Loader';
 import Post from '../../../Post';
 import homeStyles from '../styles.module.css';
 
 export default function StickyPosts() {
-  const { data } = useGetStickyPosts({ queryClient });
+  const { data, isFetching } = useGetStickyPosts({ queryClient });
+
+  if (isFetching) {
+    return <Loader />;
+  }
+
   return (
     <>
       <h2>In evidenza</h2>

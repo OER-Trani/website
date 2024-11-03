@@ -12,13 +12,14 @@
 }
 
 .post a {
-  color: var(--gray-color-dark);
+  background-color: var(--bg-color-1);
+  color: var(--text-color-1);
 }
 
 .date {
-  background-color: var(--primary-color-dark);
+  background-color: var(--bg-color-2);
   border-radius: 0.5rem;
-  color: var(--gray-color-light);
+  color: var(--text-color-2);
   display: block;
   padding: 1rem;
   position: absolute;
