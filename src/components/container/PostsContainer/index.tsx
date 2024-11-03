@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { useGetPosts } from '../../../hooks/posts';
 import { queryClient } from '../../../lib/react-query/constants';
+import Loader from '../../Loader';
 import Post from '../../Post';
 import styles from './styles.module.css';
 
 export default function PostsContainer() {
   const [page, setPage] = useState(1);
-  const { data } = useGetPosts({ queryClient, page });
+  const { data, isFetching } = useGetPosts({ queryClient, page });
+
+  if (isFetching) {
+    return <Loader />;
+  }
 
   return (
     <>
