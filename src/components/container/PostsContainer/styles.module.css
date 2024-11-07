@@ -1,6 +1,6 @@
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
   list-style: none;
   padding: 0 3rem;
@@ -26,4 +26,10 @@
 .btn[aria-disabled='true'] {
   cursor: default;
   opacity: 0.5;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  }
 }
