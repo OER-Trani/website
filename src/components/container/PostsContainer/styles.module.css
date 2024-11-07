@@ -14,7 +14,7 @@
 
 .btn {
   background-color: var(--bg-color-2);
-  border-color: var(--gray-color-dark);
+  border-color: var(--border-color-2);
   border-radius: 0.5rem;
   color: var(--text-color-2);
   cursor: pointer;

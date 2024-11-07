@@ -12,6 +12,7 @@
   --text-color-1: var(--gray-color-dark);
   --link-color-1: var(--primary-color-dark);
   --bg-color-2: var(--primary-color-dark);
+  --border-color-2: var(--gray-color-dark);
   --text-color-2: white;
   --bg-color-3: var(--primary-color-light);
   --text-color-3: black;
@@ -28,6 +29,7 @@
     --link-color-1: var(--primary-color-light);
     --bg-color-2: var(--primary-color-dark);
     --text-color-2: white;
+    --border-color-2: var(--primary-color-dark);
     --bg-color-3: var(--gray-color-dark);
     --text-color-3: var(--gray-color-dark);
     --bg-color-4: var(--gray-color-dark);

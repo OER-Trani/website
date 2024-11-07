@@ -1,5 +1,5 @@
 .item {
-  border: 1px solid var(--gray-color-dark);
+  border: 1px solid var(--border-color-2);
   border-radius: 0.5rem;
   margin-top: 5rem;
   padding: 1rem;
