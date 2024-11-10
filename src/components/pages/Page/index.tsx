@@ -9,8 +9,8 @@ export default function PageDetail() {
   const { data: { pages = {} } = {} } = useGetPages({ queryClient });
   const page = pages[id];
   const sanizedContent = useMemo(
-    () => sanitizePostContent(page.content.rendered),
-    [page.content.rendered],
+    () => page?.content?.rendered && sanitizePostContent(page.content.rendered),
+    [page?.content?.rendered],
   );
 
   if (!page) return null;
