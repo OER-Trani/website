@@ -16,3 +16,7 @@ export function getHomeLink() {
 export function isGhPage() {
   return location.host.includes('github.io');
 }
+
+export function getPageLink({ id, slug }: { id: number; slug: string }) {
+  return `${getBasePath()}/pages/${id}/${slug}`;
+}
