@@ -17,7 +17,7 @@ export default function PageDetail() {
 
   return (
     <article>
-      <h1>{page.title.rendered}</h1>
+      <h2>{page.title.rendered}</h2>
       <div dangerouslySetInnerHTML={{ __html: sanizedContent }} />
     </article>
   );
