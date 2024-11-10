@@ -3,7 +3,6 @@ import { useQuery, type QueryClient } from '@tanstack/react-query';
 import { getWpPosts } from '../../lib/wp-rest-api';
 import { mapPath } from '../../lib/wp-rest-api/constants';
 import type { PageType } from '../../lib/wp-rest-api/types/page';
-import { PostType } from '../../lib/wp-rest-api/types/post';
 
 interface IuseGetPageBySlug {
   queryClient: QueryClient;
@@ -37,8 +36,13 @@ export function useGetPages<T = QueryFnGetPagesOutput>({
 
 type QueryFnGetPagesOutput = Awaited<ReturnType<typeof queryFnGetPages>>;
 
-async function queryFnGetPages() {
-  const response = await getWpPosts<PostType>({
+async function queryFnGetPages(): Promise<{
+  pages: Record<number, PageType>;
+  pageIds: number[];
+  pagesBySlug: Record<string, PageType>;
+  pageSlugs: string[];
+}> {
+  const response = await getWpPosts<PageType>({
     path: mapPath.pages,
     params: { per_page: 10, page: 1, sticky: false, order: 'desc' },
   });
@@ -70,5 +74,7 @@ async function queryFnGetPages() {
   return {
     pages: {},
     pageIds: [],
+    pagesBySlug: {},
+    pageSlugs: [],
   };
 }

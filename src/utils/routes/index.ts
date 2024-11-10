@@ -5,6 +5,10 @@ function getBasePath() {
   return '';
 }
 
+export function getPageLink({ id, slug }: { id: number; slug: string }) {
+  return `${getBasePath()}/pages/${id}/${slug}`;
+}
+
 export function getPostLink({ id, slug }: { id: number; slug: string }) {
   return `${getBasePath()}/posts/${id}/${slug}`;
 }
