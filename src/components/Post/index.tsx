@@ -11,11 +11,11 @@ interface PostProps {
 }
 
 export default function Post({ post, showExcerpt = false }: PostProps) {
-  const text = showExcerpt ? post?.excerpt.rendered : post?.content.rendered;
+  const text = showExcerpt ? post?.excerpt?.rendered : post?.content?.rendered;
   const sanizedContent = useMemo(() => text && sanitizePostContent(text), [text]);
 
   if (!post || !sanizedContent) {
-    return null;
+    return <i>Articolo non trovato</i>;
   }
 
   const date = new Intl.DateTimeFormat('it', {
