@@ -15,7 +15,7 @@ export default function Post({ post, showExcerpt = false }: PostProps) {
   const sanizedContent = useMemo(() => text && sanitizePostContent(text), [text]);
 
   if (!post || !sanizedContent) {
-    return <i>Articolo non trovato</i>;
+    return showExcerpt ? null : <i>Articolo non trovato</i>;
   }
 
   const date = new Intl.DateTimeFormat('it', {
