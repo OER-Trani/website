@@ -1,7 +1,4 @@
-// const GITHUB_PAGES_PATH = '/website/#';
-
 function getBasePath() {
-  // if (isGhPage()) return GITHUB_PAGES_PATH;
   return '';
 }
 
@@ -17,6 +14,6 @@ export function getHomeLink() {
   return `${getBasePath()}/`;
 }
 
-export function isGhPage() {
-  return location.host.includes('github.io');
+export function isInSubDomain() {
+  return location.host.includes('github.io') || location.pathname === 'home2';
 }

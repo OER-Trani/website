@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client';
 import { queryClient } from './lib/react-query/constants';
 import QueryProvider from './lib/react-query/QueryProviderComponent';
 import { routeTree } from './routeTree.gen';
-import { isGhPage } from './utils/routes';
+import { isInSubDomain } from './utils/routes';
 //import './index.css';
 
-const history = isGhPage() ? createHashHistory() : undefined;
+const history = isInSubDomain() ? createHashHistory() : undefined;
 
 // Set up a Router instance
 const router = createRouter({
