@@ -15,5 +15,5 @@ export function getHomeLink() {
 }
 
 export function isInSubDomain() {
-  return location.host.includes('github.io') || location.pathname.includes('home2');
+  return location.host.includes('github.io');
 }
