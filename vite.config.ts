@@ -1,13 +1,18 @@
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
-import { BASE_PATH } from './src/constants/config';
+import react from '@vitejs/plugin-react';
+import { loadEnv } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: BASE_PATH,
-  plugins: [react(), TanStackRouterVite()],
-  test: {
-    setupFiles: './vitest.setup.ts',
-  },
-});
+// @ts-expect-error type undefined
+export default ({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+
+  return defineConfig({
+    base: process.env.VITE_CMS_BASE_PATH,
+    plugins: [react(), TanStackRouterVite()],
+    test: {
+      setupFiles: './vitest.setup.ts',
+    },
+  });
+};
