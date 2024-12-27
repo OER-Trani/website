@@ -32,6 +32,7 @@ jobs:
       - name: Build
         env:
           VITE_CMS_API_ENDPOINT: ${{ secrets.CMS_API_ENDPOINT }}
+          VITE_CMS_BASE_PATH: ${{ secrets.CMS_BASE_PATH }}
         run: pnpm run build
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

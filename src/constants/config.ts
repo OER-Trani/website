@@ -1,1 +1,1 @@
-export const BASE_PATH = 'home2';
+export const BASE_PATH = import.meta.env.VITE_CMS_BASE_PATH;

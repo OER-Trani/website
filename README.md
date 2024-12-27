@@ -34,4 +34,5 @@ The choice is based on the desire to build as HTML existing articles to improve 
 
 ```
 VITE_CMS_API_ENDPOINT # The endpoint of the CMS API
+VITE_CMS_BASE_PATH # The app base URL
 ```
