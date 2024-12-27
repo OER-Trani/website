@@ -1,5 +1,5 @@
 function getBasePath() {
-  return '';
+  return location.pathname.includes('home2') ? 'home2' : '';
 }
 
 export function getPageLink({ id, slug }: { id: number; slug: string }) {
