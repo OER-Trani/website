@@ -1,17 +1,17 @@
-function getBasePath() {
-  return location.pathname.includes('home2') ? 'home2' : '';
+export function getPageLink({ id, slug }: { id: number; slug: string }) {
+  return `/pages/${id}/${slug}`;
 }
 
-export function getPageLink({ id, slug }: { id: number; slug: string }) {
-  return `${getBasePath()}/pages/${id}/${slug}`;
+export function getPostsLink() {
+  return `/posts`;
 }
 
 export function getPostLink({ id, slug }: { id: number; slug: string }) {
-  return `${getBasePath()}/posts/${id}/${slug}`;
+  return `/posts/${id}/${slug}`;
 }
 
 export function getHomeLink() {
-  return `${getBasePath()}/`;
+  return `/`;
 }
 
 export function isInSubDomain() {

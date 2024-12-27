@@ -4,12 +4,14 @@ import { queryClient } from './lib/react-query/constants';
 import QueryProvider from './lib/react-query/QueryProviderComponent';
 import { routeTree } from './routeTree.gen';
 import { isInSubDomain } from './utils/routes';
+import { BASE_PATH } from './constants/config';
 //import './index.css';
 
 const history = isInSubDomain() ? createHashHistory() : undefined;
 
 // Set up a Router instance
 const router = createRouter({
+  basepath: BASE_PATH,
   routeTree,
   context: {
     queryClient,

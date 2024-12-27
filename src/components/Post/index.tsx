@@ -29,7 +29,7 @@ export default function Post({ post, showExcerpt = false }: PostProps) {
   return (
     <li className={styles.item}>
       <article className={styles.post}>
-        <Link href={link}>
+        <Link to={link}>
           <h3>{post.title.rendered}</h3>
         </Link>
         <time dateTime={post.modified} className={styles.date}>

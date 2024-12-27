@@ -61,7 +61,7 @@ async function queryFnGetWidgets(): Promise<QueryFnGetWidgetsOutput> {
     widgetIdsByParentId: {} as QueryFnGetWidgetsOutput['widgetIdsByParentId'],
   };
   const widgetsResponse = await getWpWidgets({ params: { per_page: 100 }, path: mapPath.widgets });
-  console.log({ widgetsResponse });
+
   if (widgetsResponse) {
     output = widgetsResponse.reduce((acc, widgetData) => {
       const id = widgetData.id;
